@@ -74,7 +74,7 @@ export default function Riwayat() {
                 <td className="p-4">
                   {p.file_path
                     ? <button
-                        onClick={() => setPreviewUrl(`/uploads/${p.file_path}`)}
+                        onClick={() => setPreviewUrl(`https://sistem-manajemen-tim-production.up.railway.app/uploads/${p.file_path}`)}
                         className="text-indigo-600 hover:underline text-xs bg-indigo-50 hover:bg-indigo-100 px-2 py-1 rounded-full transition">
                         📄 Preview PDF
                       </button>
