@@ -152,7 +152,7 @@ export default function ApprovalList() {
                 <p className="font-bold text-indigo-700 mb-2">{fmt(p.jumlah)}</p>
                 {p.file_path && (
                   <button
-                    onClick={() => setPreviewUrl(`https://sistem-manajemen-tim-production.up.railway.app/uploads/${p.file_path}`)}
+                    onClick={() => setPreviewUrl(p.file_path)}
                     className="inline-block text-xs text-indigo-600 hover:underline bg-indigo-50 hover:bg-indigo-100 px-3 py-1 rounded-full transition">
                     📄 Preview Dokumen PDF
                   </button>

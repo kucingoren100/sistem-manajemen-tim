@@ -1,18 +1,14 @@
 const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('../config/cloudinary');
 
-// Config upload PDF
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const dir = path.join(__dirname, '../uploads');
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    cb(null, dir);
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'pengajuan-pdf',
+    resource_type: 'raw', // wajib untuk PDF
+    allowed_formats: ['pdf'],
   },
-  filename: (req, file, cb) => {
-    const unique = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, unique + path.extname(file.originalname));
-  }
 });
 
 const fileFilter = (req, file, cb) => {
@@ -51,7 +47,7 @@ const getMine = async (req, res) => {
 
 const create = async (req, res) => {
   const { anggaran_id, judul, jumlah } = req.body;
-  const file_path = req.file ? req.file.filename : null;
+  const file_path = req.file ? req.file.path : null;
 
   if (!file_path) return res.status(400).json({ message: 'File PDF wajib diupload' });
 
