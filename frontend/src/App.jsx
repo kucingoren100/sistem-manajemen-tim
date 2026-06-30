@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Sidebar from './components/Sidebar';
+import SplashScreen from './components/SplashScreen';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Divisi from './pages/Divisi';
@@ -40,6 +42,12 @@ function AppRoutes() {
 }
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  if (showSplash) {
+    return <SplashScreen onFinish={() => setShowSplash(false)} />;
+  }
+
   return (
     <AuthProvider>
       <BrowserRouter>
