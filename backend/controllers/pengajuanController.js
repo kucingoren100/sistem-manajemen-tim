@@ -4,10 +4,12 @@ const cloudinary = require('../config/cloudinary');
 
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: {
-    folder: 'pengajuan-pdf',
-    resource_type: 'raw', // wajib untuk PDF
-    allowed_formats: ['pdf'],
+  params: (req, file) => {
+    return {
+      folder: 'pengajuan-pdf',
+      resource_type: 'raw',
+      public_id: Date.now() + '-' + Math.round(Math.random() * 1e9) + '.pdf',
+    };
   },
 });
 
