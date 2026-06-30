@@ -30,7 +30,7 @@ export default function Divisi() {
   };
 
   return (
-    <div className="p-6 max-w-2xl">
+    <div className="p-6">
       {/* Modal Konfirmasi Hapus */}
       {confirmHapus && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
@@ -54,7 +54,7 @@ export default function Divisi() {
       <h2 className="text-2xl font-bold text-gray-800 mb-1">Divisi</h2>
       <p className="text-gray-500 text-sm mb-6">Kelola divisi dalam organisasi</p>
 
-      <div className="bg-white rounded-xl shadow-sm border p-5 mb-5 space-y-3">
+      <div className="bg-white rounded-xl shadow-sm border p-5 mb-5 space-y-3 max-w-2xl">
         <h3 className="font-semibold text-gray-700">{editId ? 'Edit Divisi' : 'Tambah Divisi'}</h3>
         <input value={form.nama} onChange={e => setForm({ ...form, nama: e.target.value })}
           placeholder="Nama Divisi" className="w-full border rounded-lg px-3 py-2 text-sm" />
